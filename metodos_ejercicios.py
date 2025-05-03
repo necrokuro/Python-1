@@ -35,21 +35,6 @@ def array_faltantes():
 
     return return_num
 
-"""
- * Dado un array de enteros ordenado y sin repetidos,
- * crea una función que calcule y retorne todos los que faltan entre
- * el mayor y el menor.
- * - Lanza un error si el array de entrada no es correcto.
-"""
-
-"""
-*Dado un array de enteros ordenado y sin repetidos,
-*crea una función que calcule y retorne todos los que 
-faltan entre los enteros
-*el mayor y el menor.
-*-Lanza un error si el array de entrada no es correcto.
-"""
-
 def batallapokemon(tipo_del_atacante,tipo_del_defensor,ataque,defensa):
     print("Calculo de efectividad de ataques Pokemon")
     efectividad = {
@@ -94,16 +79,3 @@ def batallapokemon(tipo_del_atacante,tipo_del_defensor,ataque,defensa):
     print(f"el daño ha sido {int(calculo)}")
 
 
-"""
-* Crea un programa que calcule el daño de un ataque durante
- * una batalla Pokémon.
- * - La fórmula será la siguiente: daño = 50 * (ataque / defensa) * efectividad
- * - Efectividad: x2 (súper efectivo), x1 (neutral), x0.5 (no es muy efectivo)
- * - Sólo hay 4 tipos de Pokémon: Agua, Fuego, Planta y Eléctrico 
- *   (buscar su efectividad)
- * - El programa recibe los siguientes parámetros:
- *  - Tipo del Pokémon atacante.
- *  - Tipo del Pokémon defensor.
- *  - Ataque: Entre 1 y 100.
- *  - Defensa: Entre 1 y 100.
-"""
