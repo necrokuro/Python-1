@@ -1,8 +1,8 @@
 
-from metodos_ejercicios import fizzbuzz, array_faltantes, batallapokemon
+from ejercicios import fizzbuzz, missing_numbers, pokemonbattle
 
 def main():
-    print(batallapokemon("agua", "planta", 60, 75))
+    print(missing_numbers())
 
 if __name__ == "__main__":
     main()
