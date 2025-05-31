@@ -1,3 +1,4 @@
+import requests
 
 def fizzbuzz():
 
@@ -58,41 +59,38 @@ def missing_numbers():
 
 
 
-def pokemonbattle(tipo_del_atacante,tipo_del_defensor,ataque,defensa):
-
+def poke_battle():
 
     print("Calculo de efectividad de ataques Pokemon")
-    effectiveness = {
+    URL = "https://pokeapi.co/api/v2/type/"
 
-        "agua": {
-            "fuego": 2,
-            "planta": 1,
-            "electrico": 0.5,
-            "agua": 1
-        },
+    pokemon1 = input("Ingrese el tipo del atacante: ")
+    pokemon2 = input("Ingrese el tipo del defensor: ")
+    attack = int(input("Ingrese el ataque del atacante: "))
+    defense = int(input("Ingrese la defensa del defensor: "))
 
-        "fuego": {
-            "fuego": 0.5,
-            "planta": 2,
-            "electrico": 1,
-            "agua": 0.5
-        },
+    attacker_response = requests.get(URL + pokemon1) 
+    defender_response = requests.get(URL + pokemon2)
 
-        "electrico": {
-            "fuego": 1,
-            "planta": 0.5,
-            "electrico": 0.5,
-            "agua": 2
-        },
+    attack_data = attacker_response.json()
+    defense_data = defender_response.json()
 
-        "planta": {
-            "fuego": 0.5,
-            "planta": 0.5,
-            "electrico": 1,
-            "agua": 2
-        },
-    }
-    attack_effective = effectiveness[tipo_del_atacante][tipo_del_defensor]
+    attack_effective = 1
+
+    for type_pokemon in defense_data["damage_relations"]["double_damage_from"]:
+        if type_pokemon["name"] == attack_data["name"]:
+            attack_effective = 2
+            break
+
+    for type_pokemon in defense_data["damage_relations"]["half_damage_from"]:
+        if type_pokemon["name"] == attack_data["name"]:
+            attack_effective = 0.5
+            break
+
+    for type_pokemon in defense_data["damage_relations"]["no_damage_from"]:
+        if type_pokemon["name"] == attack_data["name"]:
+            attack_effective = 0
+            break
 
 
     if attack_effective == 2:
@@ -107,7 +105,7 @@ def pokemonbattle(tipo_del_atacante,tipo_del_defensor,ataque,defensa):
     else:
         print("Ingrese los parametros correctos")
 
-    calculo = 50 * (ataque / defensa) * attack_effective
+    calculo = 50 * (attack / defense) * attack_effective
 
     print(f"el daño ha sido {int(calculo)}")
 

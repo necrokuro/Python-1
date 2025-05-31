@@ -1,8 +1,8 @@
 
-from ejercicios import fizzbuzz, missing_numbers, pokemonbattle
+from ejercicios import fizzbuzz, missing_numbers, poke_battle
 
 def main():
-    print(missing_numbers())
+    poke_battle()
 
 if __name__ == "__main__":
     main()
